@@ -16,8 +16,8 @@ MongoClient.connect(connectionString, function(err, client) {
 function insertToDb(item) {
   return tasksCollection.insertOne(item);
 };
-function findInDb(item) {
-  return tasksCollection.find(item);
+function findAllInDb() {
+  return tasksCollection.find().ToArray();
 };
 function deleteInDb(item) {
   return tasksCollection.findOneAndDelete(item);
@@ -26,4 +26,4 @@ function updateInDb(item, update) {
   return tasksCollection.findOneAndUpdate(item, update);
 };
 
-export {insertToDb, deleteInDb,findInDb,updateInDb}; 
+export {insertToDb, deleteInDb,findAllInDb,updateInDb}; 

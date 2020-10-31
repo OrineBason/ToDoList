@@ -1,22 +1,22 @@
-import { insertToDb, deleteInDb, findInDb,updateInDb} from "../config/DAL.js";
+import { insertToDb, deleteInDb, findAllInDb ,updateInDb} from "../config/DAL.js";
 
-exports.createTask = (req, res) => {
+function createTask (req, res) {
   insertToDb(req.body)
     .then(
       res.status(200).json("Success"))
     .catch((error) => console.log(error));
 };
 
-exports.getTask = (req, res) => {
-  findInDb()
+function getTasks(req, res) {
+  findAllInDb()
     .then((results) => {
-      res.render("index", { tasks: results });
       console.log(results);
+      res.render("index", { tasks: results });
     })
     .catch((error) => console.error(error));
 };
 
-exports.update = (req, res) => {
+function updateTask(req, res) {
     updateInDb(
       { title: "orine", description: "bason" },
       {
@@ -33,10 +33,12 @@ exports.update = (req, res) => {
     .catch((error) => console.error(error));
 };
 
-exports.deleteOne = (req, res) => {
+function deleteOneTask (req, res){
   deleteInDb({ title: req.body.title })
     .then((result) => {
       res.status(200).json(`Deleted task`);
     })
     .catch((error) => console.error(error));
 };
+
+export {createTask, updateTask, deleteOneTask, getTasks}
