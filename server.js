@@ -9,6 +9,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-app.use('/tasks', router)
+app.use('', router)
 app.listen(8080, () => console.log('Example app listening on port 3000!'));
 

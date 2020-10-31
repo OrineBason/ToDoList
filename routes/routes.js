@@ -1,10 +1,10 @@
-import {create, update, get, deleteOne} from '../service/tasks/js'
 import express from 'express';
+import {createTask, getTask, updateTask, deleteOneTask} from '../service/Tasks.service.js'
 const router = express.Router()
 
-router.get("/", get);
-router.post("/tasks", create);
-router.put("/tasks", update);
-router.delete("/tasks", deleteOne);
+router.get("/", getTask);
+router.post("/tasks", createTask);
+router.put("/tasks", updateTask);
+router.delete("/tasks", deleteOneTask);
 
 export default router;
